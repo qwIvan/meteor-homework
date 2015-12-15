@@ -7,3 +7,10 @@ Template.CardList.rendered=->
   $('#masonry-list').masonry
     itemSelector: '.card'
     gutter: 10
+
+Template.nav.events
+  'click #login-btn':->  $('#login-modal').openModal()
+
+Accounts.ui.config
+  passwordSignupFields: 'USERNAME_ONLY'
+T9n.setLanguage 'zh_cn'

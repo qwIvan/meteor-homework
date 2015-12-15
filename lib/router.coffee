@@ -1,6 +1,7 @@
 Router.configure
   layoutTemplate: 'layout'
   loadingTemplate: 'loading'
-  #todo waitOn:xxx...订阅
+  waitOn:->
+    Meteor.subscribe('tweets')
 
 Router.route '/','CardList'
