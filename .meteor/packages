@@ -23,6 +23,7 @@ accounts-password
 mquandalle:jade
 materialize:materialize
 coffeescript
-isotope:isotope
 planettraining:material-design-icons-font
 less
+isotope:isotope
+iron:router
