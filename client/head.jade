@@ -1,12 +1,14 @@
 head
     title 作业
-    link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
 body
     header
         nav
             .nav-wrapper
                 .container
-                    a.brand-logo 作业
-                    ul.right
-    #main
+                    .brand-logo 作业
+        #nav
+            +sideNav
+    main#main
         +tweetsList
+        .fixed-action-btn
+            +FAB
