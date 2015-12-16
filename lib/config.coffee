@@ -10,7 +10,6 @@ Router.route '/',
 
 AccountsTemplates.configure
   overrideLoginErrors: false
-  sendVerificationEmail: true
   onSubmitHook: (err) ->
     $ '#login-modal'
     .closeModal() if not err
