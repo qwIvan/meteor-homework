@@ -1,0 +1,53 @@
+head
+    title 作业
+
+template(name="tweetCard")
+    .card.hoverable
+        .card-content
+            .card-title #{author}
+            p #{content}
+        .card-action
+            .btn-floating.grey.lighten-3.waves-effect.waves-red
+                i.material-icons.grey-text &#xE3CD;
+            a.right(href='#')
+                h6 转发
+            a.right(href='#')
+                h6 评论
+
+template(name="CardList")
+    +publish
+    #masonry-list.valign
+        +each tweets
+            +tweetCard
+
+template(name="layout")
+    +nav
+    +yield
+
+template(name="loading")
+    .progress#loading-progress
+        .indeterminate
+
+template(name="nav")
+    header
+        nav
+            .nav-wrapper
+                .container
+                    a.brand-logo(href="{{pathFor 'CardList'}}") 作业
+                    .right
+                        .at-btn.btn#login-btn #{btnText}
+        .modal#login-modal
+            .modal-content
+                +atForm
+
+template(name="publish")
+    .fixed-action-btn#edit-btn
+        .btn-floating.btn-large.red.waves-effect.waves-light.tooltipped(data-position="left",data-tooltip="发布新内容",data-delay="0")
+            i.large.material-icons mode_edit
+    #edit-modal.modal
+        .modal-content
+            textarea.materialize-textarea(placeholder="你最近有什么新鲜事要分享吗？")
+        .modal-footer
+            button.btn.waves-effect.waves-light(type="submit") 发布
+                i.material-icons.right send
+            .btn-flat.waves-effect.modal-action.modal-close 取消
