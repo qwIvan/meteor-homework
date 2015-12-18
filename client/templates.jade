@@ -34,15 +34,23 @@ template(name="nav")
             .nav-wrapper
                 .container
                     a.brand-logo(href="{{pathFor 'CardList'}}") 作业
-                    .right
-                        .at-btn.btn#login-btn #{btnText}
+                    ul.right
+                        li
+                            a#profile-btn(class="{{#unless $.Meteor.userId}}hide{{/unless}}",data-activates='profile-drop',href='#!') 我
+                                i.material-icons.right arrow_drop_down
+                            unless $.Meteor.userId
+                                .btn.at-btn#login-btn 登录
         .modal#login-modal
             .modal-content
                 +atForm
+        .ui.dropdown-content#profile-drop
+            ul(class="{{#unless $.Meteor.userId}}hide{{/unless}}")
+                li
+                    a#logout-a 注销
 
 template(name="publish")
-    .fixed-action-btn#edit-btn
-        .btn-floating.btn-large.red.waves-effect.waves-light.tooltipped(data-position="left",data-tooltip="发布新内容",data-delay="0")
+    .fixed-action-btn
+        #edit-btn.btn-floating.btn-large.red.waves-effect.waves-light.tooltipped(data-position="left",data-tooltip="发布新内容",data-delay="0")
             i.large.material-icons mode_edit
     #edit-modal.modal
         .modal-content

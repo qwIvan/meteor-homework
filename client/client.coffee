@@ -2,6 +2,10 @@ Template.publish.events
   'click #edit-btn':->
     $ '#edit-modal'
     .openModal()
+Template.publish.rendered=->
+  $ '#edit-btn'
+  .tooltip
+    delay: 0
 
 Template.CardList.helpers
   tweets:-> Tweets.find()
@@ -18,6 +22,10 @@ Template.nav.events
     else
       $ '#login-modal'
       .openModal()
-Template.nav.helpers
-  btnText:->
-    if Meteor.user() then '注销' else '登录'
+  'click #logout-a':->
+    Meteor.logout()
+Template.nav.rendered=->
+  $ '#profile-btn'
+  .dropdown
+    belowOrigin: true
+    hover: true
