@@ -30,6 +30,7 @@ Template.CardList.rendered=->
     .masonry
       itemSelector: '.card'
       gutter: 10
+      isFitWidth: true
 
 Template.nav.events
   'click #reg-btn':->
