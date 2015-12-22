@@ -22,7 +22,8 @@ template(name="CardList")
 
 template(name="layout")
     +nav
-    +yield
+    #center
+        +yield
 
 template(name="loading")
     .progress#loading-progress
@@ -36,7 +37,7 @@ template(name="nav")
                     a.brand-logo(href="{{pathFor 'CardList'}}") 作业
                     ul.right
                         li
-                            a#profile-btn(class="{{#unless $.Meteor.userId}}hide{{/unless}}",data-activates='profile-drop',href='#!') 我
+                            a#profile-btn(class="{{#unless $.Meteor.userId}}hide{{/unless}}",data-activates='profile-drop',href='#!') {{$.Meteor.user.username}}
                                 i.material-icons.right arrow_drop_down
                             unless $.Meteor.userId
                                 .btn.at-btn#login-btn 登录
@@ -50,12 +51,16 @@ template(name="nav")
 
 template(name="publish")
     .fixed-action-btn
-        #edit-btn.btn-floating.btn-large.red.waves-effect.waves-light.tooltipped(data-position="left",data-tooltip="发布新内容",data-delay="0")
-            i.large.material-icons mode_edit
+        #edit-btn.btn-floating.btn-large.red.tooltipped.modal-trigger(class="{{#unless $.Meteor.userId}}hide{{/unless}} {{#if $.Session.get 'modalOpen'}}modal-open{{else}}modal-close{{/if}}",data-position="left",data-tooltip="{{#if $.Session.get 'modalOpen'}}关闭{{else}}发布新内容{{/if}}",data-delay="0",data-target="edit-modal")
+            i.large.material-icons add
     #edit-modal.modal
         .modal-content
-            textarea.materialize-textarea(placeholder="你最近有什么新鲜事要分享吗？")
+            textarea.materialize-textarea#publish-area(placeholder="你最近有什么新鲜事要分享吗？")
         .modal-footer
             button.btn.waves-effect.waves-light(type="submit") 发布
                 i.material-icons.right send
             .btn-flat.waves-effect.modal-action.modal-close 取消
+
+template(name="reCaptchaFix")
+    .row
+        .g-recaptcha(data-sitekey='{{key}}',data-theme='{{theme}}',data-type='{{data_type}}')

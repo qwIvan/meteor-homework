@@ -1,17 +1,57 @@
-@site-nav: 240px;
+@left-nav: 240px;
+@top-nav: 64px;
 @card-width: 450px;
 
-#main{
-  padding-left: @site-nav;
-}
-#nav{
-  width: @site-nav;
+body{
+  overflow: hidden;
 }
 
 .card{
   width: @card-width;
 }
 
+.btn-floating:hover{
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+#edit-btn{
+  -webkit-transition: -webkit-transform .2s ease;
+  -moz-transition: -moz-transform .2s ease;
+  -ms-transition: -ms-transform .2s ease;
+  -o-transition: -o-transform .2s ease;
+  transition: all .2s ease;
+  box-shadow: none;
+}
+#edit-btn.modal-open{
+  -webkit-transition: -webkit-transform .2s ease;
+  -moz-transition: -moz-transform .2s ease;
+  -ms-transition: -ms-transform .2s ease;
+  -o-transition: -o-transform .2s ease;
+  transition: transform .2s ease;
+  -webkit-transform: rotate(225deg);
+  -moz-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  -o-transform: rotate(225deg);
+  transform: rotate(225deg);
+  box-shadow: none;
+}
+.lean-overlay{
+  z-index: 997!important;
+}
+
+#center{
+  top:@top-nav;
+  left: @left-nav;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  position: absolute;
+}
+
 #loading-progress{
   margin: 0;
 }
+
+#login-modal{
+  max-height: none;
+}
+
