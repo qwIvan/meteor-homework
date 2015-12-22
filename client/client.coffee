@@ -32,8 +32,16 @@ Template.CardList.rendered=->
       gutter: 10
 
 Template.nav.events
+  'click #reg-btn':->
+    AccountsTemplates.setState 'signUp'
+    $ '#account-modal'
+      .openModal
+        ready:->
+          $ '#at-field-email'
+            .focus()
   'click #login-btn':->
-    $ '#login-modal'
+    AccountsTemplates.setState 'signIn'
+    $ '#account-modal'
       .openModal
         ready:->
           $ '#at-field-username_and_email'

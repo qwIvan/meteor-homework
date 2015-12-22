@@ -22,7 +22,7 @@ template(name="CardList")
 
 template(name="layout")
     +nav
-    #center
+    .main-content
         +yield
 
 template(name="loading")
@@ -39,9 +39,12 @@ template(name="nav")
                         li
                             a#profile-btn(class="{{#unless $.Meteor.userId}}hide{{/unless}}",data-activates='profile-drop',href='#!') {{$.Meteor.user.username}}
                                 i.material-icons.right arrow_drop_down
-                            unless $.Meteor.userId
-                                .btn.at-btn#login-btn 登录
-        .modal#login-modal
+                        unless $.Meteor.userId
+                            li
+                                a#login-btn(href='#!') 已有账户？直接登录
+                            .btn.at-btn#reg-btn 注册
+
+        .modal#account-modal
             .modal-content
                 +atForm
         .ui.dropdown-content#profile-drop

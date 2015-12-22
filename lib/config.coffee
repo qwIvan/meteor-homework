@@ -12,7 +12,7 @@ AccountsTemplates.configure
   overrideLoginErrors: false
   lowercaseUsername: true
   onSubmitHook: (err) ->
-    $ '#login-modal'
+    $ '#account-modal'
       .closeModal() if not err
   showReCaptcha: true
   reCaptcha:
