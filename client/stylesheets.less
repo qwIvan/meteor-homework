@@ -1,4 +1,4 @@
-@left-nav: 240px;
+@side-nav: 240px;
 @top-nav: 64px;
 @card-width: 450px;
 
@@ -40,7 +40,7 @@ body{
 
 .main-content{
   top:@top-nav;
-  left: @left-nav;
+  left: @side-nav;
   bottom: 0;
   right: 0;
   overflow: auto;
@@ -60,4 +60,9 @@ body{
 
 #masonry-list{
   margin: 0 auto;
+}
+
+.side-nav{
+  top: @top-nav;
+  width: @side-nav;
 }

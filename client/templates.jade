@@ -19,11 +19,22 @@ template(name="CardList")
     #masonry-list.valign
         +each tweets
             +tweetCard
-
 template(name="layout")
     +nav
+    +sideBar
     .main-content
         +yield
+
+
+template(name="sideBar")
+    .side-nav.fixed
+        .container
+            .row
+                h5 Hello
+            .row
+                h4 Hello
+            .row
+                h3 Hello
 
 template(name="loading")
     .progress#loading-progress
