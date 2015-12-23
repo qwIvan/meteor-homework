@@ -48,7 +48,9 @@ template(name="nav")
                     a.brand-logo(href="{{pathFor 'CardList'}}") 作业
                     ul.right
                         li
-                            a#profile-btn(class="{{#unless $.Meteor.userId}}hide{{/unless}}",data-activates='profile-drop',href='#!') {{$.Meteor.user.username}}
+                            a#profile-btn.valign-wrapper(class="{{#unless $.Meteor.userId}}hide{{/unless}}",data-activates='profile-drop',href='#!')
+                                img#nav-avatar.circle.responsive-img(src="{{avatarUrl 36}}")
+                                span {{$.Meteor.user.username}}
                                 i.material-icons.right arrow_drop_down
                         unless $.Meteor.userId
                             li

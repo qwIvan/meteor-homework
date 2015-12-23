@@ -32,6 +32,10 @@ Template.CardList.rendered=->
       gutter: 10
       isFitWidth: true
 
+Template.nav.helpers
+  avatarUrl:(size)-> Gravatar.imageUrl Meteor.user().emails[0].address,
+    default: 'monsterid'
+    size: size
 Template.nav.events
   'click #reg-btn':->
     AccountsTemplates.setState 'signUp'
