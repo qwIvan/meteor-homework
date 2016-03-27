@@ -48,11 +48,11 @@ template(name="nav")
                     a.brand-logo(href="{{pathFor 'CardList'}}") 作业
                     ul.right
                         li
-                            a#profile-btn.valign-wrapper(class="{{#unless $.Meteor.userId}}hide{{/unless}}",data-activates='profile-drop',href='#!')
+                            a#profile-btn.valign-wrapper(class="{{#unless currentUser}}hide{{/unless}}",data-activates='profile-drop',href='#!')
                                 img#nav-avatar.circle.responsive-img(src="{{avatarUrl 36}}")
                                 span {{$.Meteor.user.username}}
                                 i.material-icons.right arrow_drop_down
-                        unless $.Meteor.userId
+                        unless currentUser
                             li
                                 a#login-btn(href='#!') 已有账户？直接登录
                             .btn.at-btn#reg-btn 注册
@@ -61,19 +61,19 @@ template(name="nav")
             .modal-content
                 +atForm
         .ui.dropdown-content#profile-drop
-            ul(class="{{#unless $.Meteor.userId}}hide{{/unless}}")
+            ul(class="{{#unless currentUser}}hide{{/unless}}")
                 li
                     a#logout-a 注销
 
 template(name="publish")
     .fixed-action-btn
-        #edit-btn.btn-floating.btn-large.red.tooltipped.modal-trigger(class="{{#unless $.Meteor.userId}}hide{{/unless}} {{#if $.Session.get 'modalOpen'}}modal-open{{else}}modal-close{{/if}}",data-position="left",data-tooltip="{{#if $.Session.get 'modalOpen'}}关闭{{else}}发布新内容{{/if}}",data-delay="0",data-target="edit-modal")
+        #edit-btn.btn-floating.btn-large.red.tooltipped.modal-trigger(class="{{#unless currentUser}}hide{{/unless}} {{#if $.Session.get 'modalOpen'}}modal-open{{else}}modal-close{{/if}}",data-position="left",data-tooltip="{{#if $.Session.get 'modalOpen'}}关闭{{else}}发布新内容{{/if}}",data-delay="0",data-target="edit-modal")
             i.large.material-icons add
-    #edit-modal.modal
+    form#edit-modal.modal
         .modal-content
             textarea.materialize-textarea#publish-area(placeholder="你最近有什么新鲜事要分享吗？")
         .modal-footer
-            button.btn.waves-effect.waves-light(type="submit") 发布
+            #pub.button.btn.waves-effect.waves-light 发布
                 i.material-icons.right send
             .btn-flat.waves-effect.modal-action.modal-close 取消
 

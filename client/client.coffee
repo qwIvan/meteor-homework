@@ -1,4 +1,14 @@
 Template.publish.events
+  'click #pub':->
+    $ '#edit-modal'
+      .submit()
+  'submit #edit-modal':->
+    Tweets.insert
+      content:
+        $ '#publish-area'
+        .val()
+      author: Meteor.user().username
+      createdAt: new Date()
   'click #edit-btn.modal-open':->
     $ '#edit-modal'
       .closeModal()
@@ -24,7 +34,10 @@ Template.publish.rendered=->
       delay: 0
 
 Template.CardList.helpers
-  tweets:-> Tweets.find()
+  tweets:-> Tweets.find {},
+    sort:
+      createdAt: -1
+
 Template.CardList.rendered=->
   $ '#masonry-list'
     .masonry
